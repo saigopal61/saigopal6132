@@ -1,0 +1,28 @@
+def modify_string(s):
+    modified = ""
+    n = len(s)
+
+    for i in range(n):
+        ascii_val = ord(s[i])
+
+        if i > 0:
+            prev_val = ord(modified[i - 1])
+            if ascii_val % 2 == 0:
+                new_val = prev_val + (ascii_val % 7)
+                if new_val > 127:
+                    new_val = 83
+            else:
+                new_val = prev_val - (ascii_val % 5)
+                if new_val < 0:
+                    new_val = 83
+        else:
+            new_val = ascii_val
+
+        modified += chr(new_val)
+
+    return modified
+
+# Example usage:
+s = "sHQen)"
+modified_string = modify_string(s)
+print("Final Answer:", modified_string)
