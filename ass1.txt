@@ -1,0 +1,37 @@
+def shortest_strings(s,x):
+    strings=[]
+    n=len(s)
+    for i in range (n):
+        for j in range(i+x-1,n):
+            if s[i]==s[j]:
+                substring=s[i:j+1]
+                if len(substring)>=x:
+                    strings.append(substring)
+    
+    shortest_length = float('inf')
+    for substring in strings:
+        shortest_length=min(shortest_length,len(substring))
+    end="  "
+    for substring in strings:
+        if len(substring)==shortest_length:
+               print("x={}".format(x),"Answer:", substring)
+    if(x>=8):
+        print("x={}".format(x),"Answer:", 'notfound')
+
+###########output:
+
+
+s="sbccdbacca"
+x=3
+shortest_strings(s,x)
+
+x=4
+shortest_strings(s,x)
+x=5
+shortest_strings(s,x)
+x=6
+shortest_strings(s,x)
+x=7
+shortest_strings(s,x)
+x=8
+shortest_strings(s,x)
